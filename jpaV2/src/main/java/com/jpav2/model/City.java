@@ -1,23 +1,32 @@
 package com.jpav2.model;
 
+import javax.persistence.*;
 
-import java.util.Objects;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+// ********** The Entities ***********
 
 @Entity
-@Table(name = "cities")
+@Table(schema = "City")
+//@Table(name = "cities")
 public class City {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
     private int population;
+
+//    @Column(unique = true, nullable = false)
+//    private String email;
+
+    @Override
+    public String toString() {
+        return "City{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", population=" + population +
+                '}';
+    }
 
     public City() {
     }
@@ -27,6 +36,17 @@ public class City {
         this.name = name;
         this.population = population;
     }
+
+//    public String getEmail() {
+//        return email;
+//    }
+
+
+//
+//    public void setEmail(String email) {
+//        this.email = email;
+//    }
+
 
     public Long getId() {
 
@@ -57,47 +77,39 @@ public class City {
         this.population = population;
     }
 
-    @Override
-    public int hashCode() {
+//    @Override
+//    public int hashCode() {
+//
+//        int hash = 7;
+//        hash = 79 * hash + Objects.hashCode(this.id);
+//        hash = 79 * hash + Objects.hashCode(this.name);
+//        hash = 79 * hash + this.population;
+//
+//        return hash;
+//    }
+//
+//    @Override
+//    public boolean equals(Object obj) {
+//        if (this == obj) {
+//            return true;
+//        }
+//        if (obj == null) {
+//            return false;
+//        }
+//        if (getClass() != obj.getClass()) {
+//            return false;
+//        }
+//
+//        final City other = (City) obj;
+//        if (this.population != other.population) {
+//            return false;
+//        }
+//
+//        if (!Objects.equals(this.name, other.name)) {
+//            return false;
+//        }
+//
+//        return Objects.equals(this.id, other.id);
+//    }
 
-        int hash = 7;
-        hash = 79 * hash + Objects.hashCode(this.id);
-        hash = 79 * hash + Objects.hashCode(this.name);
-        hash = 79 * hash + this.population;
-
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-
-        final City other = (City) obj;
-        if (this.population != other.population) {
-            return false;
-        }
-
-        if (!Objects.equals(this.name, other.name)) {
-            return false;
-        }
-
-        return Objects.equals(this.id, other.id);
-    }
-
-    @Override
-    public String toString() {
-        return "City{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", population=" + population +
-                '}';
-    }
 }

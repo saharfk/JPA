@@ -44,8 +44,8 @@ public class MyRunner implements CommandLineRunner {
 
         logger.info("------------------------");
 
-//        logger.info("Deleting all cities");
-//        cityRepository.deleteAllInBatch();
+        logger.info("Deleting all cities");
+        cityRepository.deleteAllInBatch();
 
         logger.info("# of cities: {}", cityRepository.count());
     }
